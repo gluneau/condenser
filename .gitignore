@@ -8,4 +8,7 @@ vendor/*
 tmp/*
 .vagrant
 lib
+nightwatch-reports
+selenium-server-standalone.jar
+chromedriver
 

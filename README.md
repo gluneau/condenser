@@ -290,6 +290,12 @@ OFFLINE_SSR_TEST=true SDC_DATABASE_URL="mysql://root@127.0.0.1/steemit_dev" NODE
 
 This will read data from the blobs in `api_mockdata` directory. If you want to use another set of mock data, create a similar directory to that one and add an argument `OFFLINE_SSR_TEST_DATA_DIR` pointing to your new directory.
 
+### Run blackbox tests using nightwatch
+
+`./scripts/nightwatch-deps.sh` downloads a linux chromedriver binary and a selenium standalone jar.
+
+`scripts/nightwatch-run.sh` runs `nightwatch`, whic will start selenium and chromedriver and then run through all tests found in `src/app/nightwatch-tests`.
+
 ## Issues
 
 To report a non-critical issue, please file an issue on this GitHub project.
