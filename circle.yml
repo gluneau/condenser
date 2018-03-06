@@ -1,11 +1,14 @@
-machine:
-    services:
-        - docker
-
-dependencies:
-    override:
-        - echo "Ignore CircleCI detected dependencies"
-
-test:
-    override:
-        - docker build -t steemit/steemit.com .
+version: 2
+general:
+    artifacts:
+        - "yarn-error.log"
+jobs:
+    build:
+        machine: true
+        steps:
+            - checkout
+            - run: docker build -t steemit/condenser:$CIRCLE_BRANCH .
+            - run: docker run -ditp 8080:8080 steemit/condenser:$CIRCLE_BRANCH
+            - run: yarn install --frozen-lockfile
+            - run: ./scripts/nightwatch-deps.sh
+            - run: ./scripts/nightwatch-run.sh
