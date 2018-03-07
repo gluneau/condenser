@@ -42,11 +42,17 @@ class Header extends React.Component {
     };
 
     componentDidMount() {
-        this.setPageTitle();
+        const route = resolveRoute(this.props.pathname);
+        process.env.BROWSER &&
+            (route.page !== 'Post' && route.page !== 'PostNoCategory') &&
+            this.setPageTitle();
     }
 
     componentDidUpdate() {
-        this.setPageTitle();
+        const route = resolveRoute(this.props.pathname);
+        process.env.BROWSER &&
+            (route.page !== 'Post' && route.page !== 'PostNoCategory') &&
+            this.setPageTitle();
     }
 
     // Conside refactor.

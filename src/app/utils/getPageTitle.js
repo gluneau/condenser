@@ -69,11 +69,7 @@ const getPageTitle = (route, account_meta) => {
     if (route.page !== 'UserProfile') {
         page_title = page_title.charAt(0).toUpperCase() + page_title.slice(1);
     }
-    if (
-        process.env.BROWSER &&
-        (route.page !== 'Post' && route.page !== 'PostNoCategory')
-    )
-        return page_title;
+    return page_title;
 };
 
 export default getPageTitle;
